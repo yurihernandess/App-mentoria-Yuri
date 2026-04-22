@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Mentoria Yuri Hernandes</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #1a3a6b;
+    --azul-medio: #2a5298;
+    --azul-claro: #e8f0fc;
+    --laranja: #e87722;
+    --laranja-claro: #fff3e8;
+    --branco: #ffffff;
+    --cinza-texto: #2a4a7b;
+    --cinza-leve: #f0f4ff;
+    --borda: #c8d8f0;
+    --sucesso: #1a7a40;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–azul-claro);
+color: var(–azul);
+min-height: 100vh;
+max-width: 480px;
+margin: 0 auto;
+position: relative;
+overflow-x: hidden;
+}
+
+/* ===== SCREENS ===== */
+.screen { display: none; min-height: 100vh; flex-direction: column; }
+.screen.active { display: flex; }
+
+/* ===== TELA INICIAL ===== */
+#screen-home {
+background: linear-gradient(160deg, var(–azul) 0%, #0d1f3c 60%, #1a3a6b 100%);
+position: relative;
+overflow: hidden;
+justify-content: space-between;
+padding: 0;
+}
+
+#screen-home::before {
+content: ‘’;
+position: absolute;
+top: -100px; right: -100px;
+width: 400px; height: 400px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(232,119,34,0.15) 0%, transparent 70%);
+pointer-events: none;
+}
+
+#screen-home::after {
+content: ‘’;
+position: absolute;
+bottom: 100px; left: -80px;
+width: 300px; height: 300px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(232,119,34,0.08) 0%, transparent 70%);
+pointer-events: none;
+}
+
+.home-header {
+padding: 60px 32px 32px;
+position: relative;
+z-index: 1;
+}
+
+.home-badge {
+display: inline-block;
+background: rgba(232,119,34,0.15);
+border: 1px solid rgba(232,119,34,0.3);
+color: var(–laranja);
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 3px;
+text-transform: uppercase;
+padding: 6px 14px;
+margin-bottom: 24px;
+}
+
+.home-avatar {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+background: linear-gradient(135deg, var(–laranja), #f0a060);
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 32px;
+color: white;
+margin-bottom: 20px;
+box-shadow: 0 8px 32px rgba(232,119,34,0.4);
+}
+
+.home-nome {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 42px;
+color: white;
+line-height: 0.9;
+letter-spacing: 1px;
+margin-bottom: 6px;
+}
+
+.home-nome span { color: var(–laranja); display: block; }
+
+.home-cargo {
+font-size: 12px;
+color: rgba(255,255,255,0.5);
+letter-spacing: 2px;
+text-transform: uppercase;
+margin-bottom: 28px;
+}
+
+.home-mensagem {
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.1);
+border-left: 3px solid var(–laranja);
+padding: 20px 20px;
+margin-bottom: 8px;
+}
+
+.home-mensagem p {
+font-size: 14px;
+color: rgba(255,255,255,0.8);
+line-height: 1.7;
+font-style: italic;
+}
+
+.home-body {
+padding: 24px 32px 40px;
+position: relative;
+z-index: 1;
+}
+
+.home-stats {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 12px;
+margin-bottom: 32px;
+}
+
+.stat {
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.08);
+padding: 16px 12px;
+text-align: center;
+}
+
+.stat-num {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 28px;
+color: var(–laranja);
+line-height: 1;
+margin-bottom: 4px;
+}
+
+.stat-label {
+font-size: 10px;
+color: rgba(255,255,255,0.4);
+letter-spacing: 1px;
+text-transform: uppercase;
+line-height: 1.3;
+}
+
+.btn-primary {
+width: 100%;
+background: var(–laranja);
+color: white;
+border: none;
+padding: 18px 24px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 15px;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+cursor: pointer;
+transition: all 0.2s;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+}
+
+.btn-primary:active { transform: scale(0.98); opacity: 0.9; }
+
+/* ===== TRILHA ===== */
+#screen-trilha {
+background: var(–azul-claro);
+}
+
+.top-bar {
+background: var(–azul);
+padding: 20px 24px 16px;
+display: flex;
+align-items: center;
+gap: 16px;
+position: sticky;
+top: 0;
+z-index: 100;
+}
+
+.btn-back {
+background: rgba(255,255,255,0.1);
+border: none;
+width: 36px; height: 36px;
+display: flex; align-items: center; justify-content: center;
+color: white;
+font-size: 18px;
+cursor: pointer;
+flex-shrink: 0;
+border-radius: 2px;
+}
+
+.top-bar-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 22px;
+color: white;
+letter-spacing: 1px;
+flex: 1;
+}
+
+.top-bar-sub {
+font-size: 11px;
+color: rgba(255,255,255,0.5);
+letter-spacing: 1px;
+}
+
+.trilha-progress {
+background: var(–azul);
+padding: 0 24px 20px;
+}
+
+.progress-bar-bg {
+height: 4px;
+background: rgba(255,255,255,0.1);
+border-radius: 2px;
+overflow: hidden;
+}
+
+.progress-bar-fill {
+height: 100%;
+background: var(–laranja);
+border-radius: 2px;
+transition: width 0.5s ease;
+}
+
+.progress-text {
+font-size: 11px;
+color: rgba(255,255,255,0.4);
+margin-top: 6px;
+letter-spacing: 1px;
+}
+
+.trilha-content {
+padding: 24px 20px;
+flex: 1;
+}
+
+.modulo-card {
+background: white;
+border: 1px solid var(–borda);
+margin-bottom: 12px;
+overflow: hidden;
+cursor: pointer;
+transition: all 0.2s;
+position: relative;
+}
+
+.modulo-card.locked { opacity: 0.5; cursor: not-allowed; }
+.modulo-card.completed { border-left: 4px solid var(–sucesso); }
+.modulo-card.active { border-left: 4px solid var(–laranja); box-shadow: 0 4px 20px rgba(232,119,34,0.15); }
+.modulo-card:not(.locked):active { transform: scale(0.99); }
+
+.modulo-card-inner {
+padding: 20px;
+display: flex;
+gap: 16px;
+align-items: flex-start;
+}
+
+.modulo-icon {
+width: 48px; height: 48px;
+display: flex; align-items: center; justify-content: center;
+font-size: 22px;
+flex-shrink: 0;
+border-radius: 2px;
+}
+
+.modulo-icon.locked { background: var(–cinza-leve); }
+.modulo-icon.active { background: var(–laranja-claro); }
+.modulo-icon.completed { background: #e8f5ee; }
+
+.modulo-info { flex: 1; }
+
+.modulo-num {
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–laranja);
+margin-bottom: 4px;
+}
+
+.modulo-num.locked { color: #aaa; }
+.modulo-num.completed { color: var(–sucesso); }
+
+.modulo-titulo {
+font-family: ‘DM Serif Display’, serif;
+font-size: 18px;
+color: var(–azul);
+margin-bottom: 4px;
+line-height: 1.2;
+}
+
+.modulo-desc {
+font-size: 12px;
+color: #6a8abc;
+line-height: 1.5;
+}
+
+.modulo-meta {
+display: flex;
+gap: 12px;
+margin-top: 10px;
+flex-wrap: wrap;
+}
+
+.meta-tag {
+font-size: 10px;
+background: var(–azul-claro);
+color: var(–azul-medio);
+padding: 3px 8px;
+font-weight: 600;
+}
+
+.modulo-status {
+flex-shrink: 0;
+display: flex;
+align-items: center;
+padding-top: 4px;
+}
+
+.status-icon {
+width: 28px; height: 28px;
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 14px;
+}
+
+.status-icon.locked { background: #f0f0f0; color: #bbb; }
+.status-icon.active { background: var(–laranja); color: white; }
+.status-icon.completed { background: var(–sucesso); color: white; }
+
+/* ===== MÓDULO CONTEÚDO ===== */
+#screen-modulo {
+background: var(–azul-claro);
+}
+
+.modulo-hero {
+background: linear-gradient(135deg, var(–azul) 0%, #0d1f3c 100%);
+padding: 24px 24px 32px;
+}
+
+.modulo-hero-num {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–laranja);
+margin-bottom: 8px;
+}
+
+.modulo-hero-titulo {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 48px;
+color: white;
+line-height: 0.9;
+letter-spacing: 1px;
+margin-bottom: 12px;
+}
+
+.modulo-hero-desc {
+font-size: 14px;
+color: rgba(255,255,255,0.6);
+line-height: 1.6;
+}
+
+.cards-container {
+padding: 20px;
+flex: 1;
+}
+
+.content-card {
+background: white;
+border: 1px solid var(–borda);
+margin-bottom: 12px;
+padding: 24px 20px;
+display: none;
+}
+
+.content-card.current { display: block; animation: slideIn 0.3s ease; }
+
+@keyframes slideIn {
+from { opacity: 0; transform: translateX(20px); }
+to { opacity: 1; transform: translateX(0); }
+}
+
+.card-progress {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 20px;
+}
+
+.card-dots {
+display: flex;
+gap: 4px;
+flex: 1;
+}
+
+.dot {
+height: 3px;
+flex: 1;
+background: var(–borda);
+border-radius: 2px;
+transition: background 0.3s;
+}
+
+.dot.done { background: var(–laranja); }
+
+.card-counter {
+font-size: 11px;
+color: #aaa;
+font-weight: 600;
+flex-shrink: 0;
+}
+
+.card-tipo {
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–laranja);
+margin-bottom: 12px;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.card-titulo {
+font-family: ‘DM Serif Display’, serif;
+font-size: 22px;
+color: var(–azul);
+margin-bottom: 14px;
+line-height: 1.2;
+}
+
+.card-body {
+font-size: 15px;
+color: var(–cinza-texto);
+line-height: 1.8;
+}
+
+.card-body strong { color: var(–azul); font-weight: 700; }
+
+.card-destaque {
+background: var(–laranja-claro);
+border-left: 3px solid var(–laranja);
+padding: 16px 18px;
+margin: 16px 0;
+font-size: 14px;
+color: var(–azul);
+line-height: 1.6;
+font-style: italic;
+}
+
+.card-lista {
+list-style: none;
+margin: 14px 0;
+}
+
+.card-lista li {
+display: flex;
+gap: 10px;
+padding: 8px 0;
+border-bottom: 1px solid var(–azul-claro);
+font-size: 14px;
+color: var(–cinza-texto);
+line-height: 1.5;
+align-items: flex-start;
+}
+
+.card-lista li:last-child { border-bottom: none; }
+
+.card-lista li::before {
+content: ‘→’;
+color: var(–laranja);
+flex-shrink: 0;
+font-weight: 700;
+margin-top: 1px;
+}
+
+.card-lista li strong { color: var(–azul); }
+
+.script-box {
+background: var(–azul-claro);
+border: 1px solid var(–borda);
+padding: 18px;
+margin: 14px 0;
+}
+
+.script-label {
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–azul-medio);
+margin-bottom: 12px;
+}
+
+.script-linha {
+display: flex;
+gap: 10px;
+margin-bottom: 12px;
+align-items: flex-start;
+}
+
+.script-quem {
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 1px;
+text-transform: uppercase;
+min-width: 72px;
+padding-top: 2px;
+flex-shrink: 0;
+}
+
+.script-quem.c { color: var(–laranja); }
+.script-quem.cl { color: var(–azul-medio); }
+
+.script-fala {
+font-size: 13px;
+color: var(–azul);
+font-style: italic;
+line-height: 1.6;
+}
+
+.nav-cards {
+display: flex;
+gap: 10px;
+padding: 16px 20px;
+background: white;
+border-top: 1px solid var(–borda);
+position: sticky;
+bottom: 0;
+}
+
+.btn-nav {
+flex: 1;
+padding: 14px;
+border: none;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 13px;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+cursor: pointer;
+transition: all 0.2s;
+}
+
+.btn-nav.prev {
+background: var(–azul-claro);
+color: var(–azul);
+border: 1px solid var(–borda);
+}
+
+.btn-nav.next {
+background: var(–laranja);
+color: white;
+}
+
+.btn-nav:active { transform: scale(0.98); }
+.btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* ===== QUIZ ===== */
+#screen-quiz {
+background: var(–azul-claro);
+}
+
+.quiz-hero {
+background: linear-gradient(135deg, var(–azul) 0%, #0d1f3c 100%);
+padding: 24px;
+}
+
+.quiz-num {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 3px;
+color: var(–laranja);
+margin-bottom: 6px;
+}
+
+.quiz-titulo {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 32px;
+color: white;
+letter-spacing: 1px;
+}
+
+.quiz-content {
+padding: 20px;
+flex: 1;
+}
+
+.quiz-card {
+background: white;
+border: 1px solid var(–borda);
+padding: 24px 20px;
+display: none;
+}
+
+.quiz-card.current { display: block; animation: slideIn 0.3s ease; }
+
+.quiz-q-num {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 2px;
+color: var(–laranja);
+margin-bottom: 12px;
+}
+
+.quiz-pergunta {
+font-family: ‘DM Serif Display’, serif;
+font-size: 20px;
+color: var(–azul);
+line-height: 1.3;
+margin-bottom: 24px;
+}
+
+.quiz-opcoes { display: flex; flex-direction: column; gap: 10px; }
+
+.quiz-opcao {
+padding: 14px 16px;
+border: 1.5px solid var(–borda);
+background: white;
+font-size: 14px;
+color: var(–azul);
+cursor: pointer;
+text-align: left;
+font-family: ‘DM Sans’, sans-serif;
+transition: all 0.2s;
+line-height: 1.5;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.quiz-opcao-letra {
+width: 28px; height: 28px;
+border: 1.5px solid var(–borda);
+display: flex; align-items: center; justify-content: center;
+font-size: 11px;
+font-weight: 800;
+flex-shrink: 0;
+color: var(–azul-medio);
+}
+
+.quiz-opcao:hover:not(:disabled) { border-color: var(–laranja); background: var(–laranja-claro); }
+.quiz-opcao.correta { border-color: var(–sucesso); background: #e8f5ee; color: var(–sucesso); }
+.quiz-opcao.correta .quiz-opcao-letra { border-color: var(–sucesso); color: var(–sucesso); background: #d0f0dc; }
+.quiz-opcao.errada { border-color: #e74c3c; background: #fdf0ef; color: #c0392b; }
+.quiz-opcao.errada .quiz-opcao-letra { border-color: #e74c3c; color: #c0392b; }
+.quiz-opcao:disabled { cursor: not-allowed; }
+
+.quiz-feedback {
+margin-top: 16px;
+padding: 14px 16px;
+font-size: 13px;
+line-height: 1.6;
+display: none;
+}
+
+.quiz-feedback.show { display: block; }
+.quiz-feedback.ok { background: #e8f5ee; border-left: 3px solid var(–sucesso); color: var(–sucesso); }
+.quiz-feedback.nok { background: #fdf0ef; border-left: 3px solid #e74c3c; color: #c0392b; }
+
+.btn-quiz-next {
+margin-top: 20px;
+width: 100%;
+background: var(–azul);
+color: white;
+border: none;
+padding: 16px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 13px;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+cursor: pointer;
+display: none;
+}
+
+.btn-quiz-next.show { display: block; }
+.btn-quiz-next:active { opacity: 0.9; }
+
+/* ===== RESULTADO QUIZ ===== */
+.quiz-resultado {
+display: none;
+padding: 40px 24px;
+text-align: center;
+flex-direction: column;
+align-items: center;
+}
+
+.quiz-resultado.show { display: flex; }
+
+.resultado-icon {
+font-size: 64px;
+margin-bottom: 20px;
+}
+
+.resultado-titulo {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 40px;
+color: var(–azul);
+margin-bottom: 8px;
+letter-spacing: 1px;
+}
+
+.resultado-sub {
+font-size: 15px;
+color: var(–cinza-texto);
+margin-bottom: 32px;
+line-height: 1.6;
+}
+
+.resultado-score {
+background: var(–azul);
+color: white;
+width: 100px; height: 100px;
+border-radius: 50%;
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+margin: 0 auto 32px;
+box-shadow: 0 8px 32px rgba(26,58,107,0.3);
+}
+
+.score-num {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 40px;
+line-height: 1;
+color: var(–laranja);
+}
+
+.score-label { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 1px; }
+
+/* ===== SCRIPTS ===== */
+#screen-scripts {
+background: var(–azul-claro);
+}
+
+.scripts-content { padding: 20px; flex: 1; }
+
+.script-section { margin-bottom: 20px; }
+
+.script-section-titulo {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–azul-medio);
+margin-bottom: 10px;
+padding-bottom: 8px;
+border-bottom: 1px solid var(–borda);
+}
+
+.script-item {
+background: white;
+border: 1px solid var(–borda);
+margin-bottom: 10px;
+overflow: hidden;
+}
+
+.script-item-header {
+padding: 16px 20px;
+display: flex;
+align-items: center;
+gap: 12px;
+cursor: pointer;
+background: white;
+border: none;
+width: 100%;
+text-align: left;
+}
+
+.script-item-icon {
+width: 36px; height: 36px;
+background: var(–laranja-claro);
+display: flex; align-items: center; justify-content: center;
+font-size: 18px;
+flex-shrink: 0;
+}
+
+.script-item-titulo {
+font-size: 14px;
+font-weight: 700;
+color: var(–azul);
+flex: 1;
+}
+
+.script-item-arrow {
+color: var(–laranja);
+font-size: 16px;
+transition: transform 0.2s;
+}
+
+.script-item.open .script-item-arrow { transform: rotate(90deg); }
+
+.script-item-body {
+display: none;
+padding: 0 20px 20px;
+border-top: 1px solid var(–azul-claro);
+}
+
+.script-item.open .script-item-body { display: block; }
+
+/* ===== CHECKLIST ===== */
+#screen-checklist { background: var(–azul-claro); }
+
+.checklist-content { padding: 20px; flex: 1; }
+
+.semana-info {
+background: var(–azul);
+padding: 16px 20px;
+margin-bottom: 16px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.semana-titulo { font-size: 13px; font-weight: 700; color: white; }
+.semana-prog { font-size: 12px; color: var(–laranja); font-weight: 700; }
+
+.check-section { margin-bottom: 20px; }
+
+.check-section-titulo {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–azul-medio);
+margin-bottom: 10px;
+}
+
+.check-item {
+background: white;
+border: 1px solid var(–borda);
+padding: 14px 16px;
+display: flex;
+align-items: center;
+gap: 14px;
+margin-bottom: 8px;
+cursor: pointer;
+transition: all 0.2s;
+}
+
+.check-item.done { background: #e8f5ee; border-color: #b0d8b0; }
+
+.check-box {
+width: 24px; height: 24px;
+border: 2px solid var(–borda);
+display: flex; align-items: center; justify-content: center;
+flex-shrink: 0;
+transition: all 0.2s;
+font-size: 14px;
+color: transparent;
+}
+
+.check-item.done .check-box {
+background: var(–sucesso);
+border-color: var(–sucesso);
+color: white;
+}
+
+.check-texto {
+font-size: 14px;
+color: var(–azul);
+line-height: 1.4;
+flex: 1;
+}
+
+.check-item.done .check-texto {
+text-decoration: line-through;
+color: #6a9a6a;
+}
+
+.checklist-reset {
+width: 100%;
+background: transparent;
+border: 1.5px solid var(–borda);
+color: var(–azul-medio);
+padding: 12px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+cursor: pointer;
+margin-top: 8px;
+}
+
+/* ===== NAV BOTTOM ===== */
+.bottom-nav {
+background: var(–azul);
+display: flex;
+position: sticky;
+bottom: 0;
+z-index: 200;
+border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-item {
+flex: 1;
+padding: 12px 8px 10px;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 4px;
+cursor: pointer;
+background: none;
+border: none;
+transition: all 0.2s;
+}
+
+.nav-item.active { background: rgba(232,119,34,0.15); }
+
+.nav-icon { font-size: 20px; }
+
+.nav-label {
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: uppercase;
+color: rgba(255,255,255,0.4);
+}
+
+.nav-item.active .nav-label { color: var(–laranja); }
+
+/* ===== MENTOR FRASE ===== */
+.mentor-frase {
+background: var(–azul);
+margin: 0 20px 16px;
+padding: 16px 18px;
+border-left: 3px solid var(–laranja);
+display: flex;
+gap: 12px;
+align-items: flex-start;
+}
+
+.mentor-avatar-small {
+width: 36px; height: 36px;
+background: linear-gradient(135deg, var(–laranja), #f0a060);
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 14px;
+color: white;
+flex-shrink: 0;
+}
+
+.mentor-frase-texto {
+font-size: 13px;
+color: rgba(255,255,255,0.8);
+font-style: italic;
+line-height: 1.6;
+}
+
+.mentor-frase-autor {
+font-size: 10px;
+color: var(–laranja);
+font-weight: 700;
+letter-spacing: 1px;
+margin-top: 4px;
+}
+
+/* UTILITÁRIOS */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+
+/* Animação de conclusão */
+@keyframes pop {
+0% { transform: scale(0.8); opacity: 0; }
+60% { transform: scale(1.1); }
+100% { transform: scale(1); opacity: 1; }
+}
+
+.pop { animation: pop 0.4s ease forwards; }
+</style>
+
+</head>
+<body>
+
+<!-- ===== TELA INICIAL ===== -->
+
+<div id="screen-home" class="screen active">
+  <div class="home-header">
+    <div class="home-badge">✦ Mentoria Exclusiva</div>
+    <div class="home-avatar">YH</div>
+    <div class="home-nome">Yuri<span>Hernandes</span></div>
+    <div class="home-cargo">Gestor de Vendas · Mercado Imobiliário</div>
+    <div class="home-mensagem">
+      <p>"Você está aqui porque decidiu que quer mais. Isso já te coloca à frente da maioria. Agora eu vou te mostrar o caminho — passo a passo, do jeito que eu aprendi na prática. Bora começar."</p>
+    </div>
+  </div>
+
+  <div class="home-body">
+    <div class="home-stats">
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Módulos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">~6h</div>
+        <div class="stat-label">Conteúdo</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">MCMV</div>
+        <div class="stat-label">Nicho</div>
+      </div>
+    </div>
+
+```
+<button class="btn-primary" onclick="showScreen('trilha'); setNav('trilha')">
+  <span>Acessar Mentoria</span>
+  <span>→</span>
+</button>
+```
+
+  </div>
+</div>
+
+<!-- ===== TRILHA ===== -->
+
+<div id="screen-trilha" class="screen">
+  <div class="top-bar">
+    <div>
+      <div class="top-bar-title">Sua Trilha</div>
+      <div class="top-bar-sub">Mentoria Yuri Hernandes</div>
+    </div>
+  </div>
+
+  <div class="trilha-progress">
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="trilha-progress-fill" style="width: 0%"></div>
+    </div>
+    <div class="progress-text" id="trilha-progress-text">0 de 4 módulos concluídos</div>
+  </div>
+
+  <div class="trilha-content">
+
+```
+<div class="mentor-frase">
+  <div class="mentor-avatar-small">YH</div>
+  <div>
+    <div class="mentor-frase-texto">"O corretor que planta quando não precisa colher é o que nunca precisa se desesperar para colher."</div>
+    <div class="mentor-frase-autor">— Yuri Hernandes</div>
+  </div>
+</div>
+
+<!-- Módulo 0 -->
+<div class="modulo-card active" onclick="abrirModulo(0)" id="card-mod-0">
+  <div class="modulo-card-inner">
+    <div class="modulo-icon active">🧠</div>
+    <div class="modulo-info">
+      <div class="modulo-num">Módulo 0</div>
+      <div class="modulo-titulo">A Decisão</div>
+      <div class="modulo-desc">A base que nenhuma imobiliária ensina — e que separa quem fica de quem desiste.</div>
+      <div class="modulo-meta">
+        <span class="meta-tag">60–75 min</span>
+        <span class="meta-tag">5 cards</span>
+        <span class="meta-tag">Quiz</span>
+      </div>
+    </div>
+    <div class="modulo-status">
+      <div class="status-icon active" id="status-mod-0">▶</div>
+    </div>
+  </div>
+</div>
+
+<!-- Módulo 1 -->
+<div class="modulo-card locked" onclick="abrirModulo(1)" id="card-mod-1">
+  <div class="modulo-card-inner">
+    <div class="modulo-icon locked">🚶</div>
+    <div class="modulo-info">
+      <div class="modulo-num locked">Módulo 1</div>
+      <div class="modulo-titulo">A Prospecção</div>
+      <div class="modulo-desc">Como gerar oportunidades na rua e no online — e por que o lead que você busca vale mais.</div>
+      <div class="modulo-meta">
+        <span class="meta-tag">75–90 min</span>
+        <span class="meta-tag">6 cards</span>
+        <span class="meta-tag">Quiz</span>
+      </div>
+    </div>
+    <div class="modulo-status">
+      <div class="status-icon locked" id="status-mod-1">🔒</div>
+    </div>
+  </div>
+</div>
+
+<!-- Módulo 2 -->
+<div class="modulo-card locked" onclick="abrirModulo(2)" id="card-mod-2">
+  <div class="modulo-card-inner">
+    <div class="modulo-icon locked">🤝</div>
+    <div class="modulo-info">
+      <div class="modulo-num locked">Módulo 2</div>
+      <div class="modulo-titulo">A Conexão</div>
+      <div class="modulo-desc">Como descobrir a dor do cliente com perguntas certas e apresentar a solução certa.</div>
+      <div class="modulo-meta">
+        <span class="meta-tag">75–90 min</span>
+        <span class="meta-tag">6 cards</span>
+        <span class="meta-tag">Quiz</span>
+      </div>
+    </div>
+    <div class="modulo-status">
+      <div class="status-icon locked" id="status-mod-2">🔒</div>
+    </div>
+  </div>
+</div>
+
+<!-- Módulo 3 -->
+<div class="modulo-card locked" onclick="abrirModulo(3)" id="card-mod-3">
+  <div class="modulo-card-inner">
+    <div class="modulo-icon locked">✍️</div>
+    <div class="modulo-info">
+      <div class="modulo-num locked">Módulo 3</div>
+      <div class="modulo-titulo">O Compromisso</div>
+      <div class="modulo-desc">Como lidar com objeções sem travar e fechar o negócio na mesa com postura e segurança.</div>
+      <div class="modulo-meta">
+        <span class="meta-tag">75–90 min</span>
+        <span class="meta-tag">6 cards</span>
+        <span class="meta-tag">Quiz</span>
+      </div>
+    </div>
+    <div class="modulo-status">
+      <div class="status-icon locked" id="status-mod-3">🔒</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="bottom-nav" id="nav-trilha">
+    <button class="nav-item" onclick="showScreen('home'); setNav('')">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-label">Início</div>
+    </button>
+    <button class="nav-item active" onclick="showScreen('trilha'); setNav('trilha')">
+      <div class="nav-icon">📚</div>
+      <div class="nav-label">Trilha</div>
+    </button>
+    <button class="nav-item" onclick="showScreen('scripts'); setNav('scripts')">
+      <div class="nav-icon">💬</div>
+      <div class="nav-label">Scripts</div>
+    </button>
+    <button class="nav-item" onclick="showScreen('checklist'); setNav('checklist')">
+      <div class="nav-icon">✅</div>
+      <div class="nav-label">Semana</div>
+    </button>
+  </div>
+</div>
+
+<!-- ===== MÓDULO CONTEÚDO ===== -->
+
+<div id="screen-modulo" class="screen">
+  <div class="top-bar">
+    <button class="btn-back" onclick="voltarTrilha()">←</button>
+    <div>
+      <div class="top-bar-title" id="modulo-top-title">Módulo</div>
+      <div class="top-bar-sub" id="modulo-top-sub">Conteúdo</div>
+    </div>
+  </div>
+
+  <div class="modulo-hero">
+    <div class="modulo-hero-num" id="modulo-hero-num">Módulo 0</div>
+    <div class="modulo-hero-titulo" id="modulo-hero-titulo">A Decisão</div>
+    <div class="modulo-hero-desc" id="modulo-hero-desc">A base que nenhuma imobiliária ensina.</div>
+  </div>
+
+  <div class="cards-container" id="cards-container"></div>
+
+  <div class="nav-cards">
+    <button class="btn-nav prev" id="btn-prev" onclick="prevCard()">← Anterior</button>
+    <button class="btn-nav next" id="btn-next" onclick="nextCard()">Próximo →</button>
+  </div>
+</div>
+
+<!-- ===== QUIZ ===== -->
+
+<div id="screen-quiz" class="screen">
+  <div class="top-bar">
+    <button class="btn-back" onclick="voltarModulo()">←</button>
+    <div>
+      <div class="top-bar-title">Quiz</div>
+      <div class="top-bar-sub" id="quiz-top-sub">Teste seu conhecimento</div>
+    </div>
+  </div>
+
+  <div class="quiz-hero">
+    <div class="quiz-num" id="quiz-hero-num">Módulo 0</div>
+    <div class="quiz-titulo" id="quiz-hero-titulo">A Decisão</div>
+  </div>
+
+  <div class="quiz-content">
+    <div id="quiz-cards-container"></div>
+    <div class="quiz-resultado" id="quiz-resultado">
+      <div class="resultado-icon pop" id="resultado-icon">🏆</div>
+      <div class="resultado-titulo" id="resultado-titulo">Aprovado!</div>
+      <div class="resultado-score">
+        <div class="score-num" id="score-num">0</div>
+        <div class="score-label">de 5</div>
+      </div>
+      <div class="resultado-sub" id="resultado-sub">Parabéns! Você concluiu este módulo.</div>
+      <button class="btn-primary" id="btn-proximo-modulo" onclick="concluirModulo()" style="width:100%">
+        Próximo Módulo →
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+
+<div id="screen-scripts" class="screen">
+  <div class="top-bar">
+    <div>
+      <div class="top-bar-title">Scripts</div>
+      <div class="top-bar-sub">Consulta rápida em campo</div>
+    </div>
+  </div>
+
+  <div class="scripts-content">
+
+```
+<div class="mentor-frase" style="margin: 0 0 16px;">
+  <div class="mentor-avatar-small">YH</div>
+  <div>
+    <div class="mentor-frase-texto">"Use esses scripts como guia — não como texto decorado. Fale com naturalidade."</div>
+    <div class="mentor-frase-autor">— Yuri Hernandes</div>
+  </div>
+</div>
+
+<div class="script-section">
+  <div class="script-section-titulo">Captação Presencial</div>
+
+  <div class="script-item" id="s1">
+    <button class="script-item-header" onclick="toggleScript('s1')">
+      <div class="script-item-icon">🚶</div>
+      <div class="script-item-titulo">Abordagem na rua</div>
+      <div class="script-item-arrow">›</div>
+    </button>
+    <div class="script-item-body">
+      <div class="script-box">
+        <div class="script-label">Script · Abordagem presencial</div>
+        <div class="script-linha">
+          <div class="script-quem c">Você</div>
+          <div class="script-fala">"Bom dia! Tudo bem? Sou [nome], consultor de imóveis aqui na região. Você mora de aluguel ou já tem casa própria?"</div>
+        </div>
+        <div class="script-linha">
+          <div class="script-quem cl">Cliente</div>
+          <div class="script-fala">"Moro de aluguel..."</div>
+        </div>
+        <div class="script-linha">
+          <div class="script-quem c">Você</div>
+          <div class="script-fala">"Já pensou em sair do aluguel? A parcela sai por um valor próximo ao que muita gente já paga — e no final o imóvel é seu. Posso te mostrar como funciona?"</div>
+        </div>
+        <div class="script-linha">
+          <div class="script-quem c">Você</div>
+          <div class="script-fala">"Mesmo que não seja agora, posso fazer um cadastro rápido? Quando surgir algo no seu perfil eu te aviso — sem compromisso."</div>
+        </div>
+      </div>
+      <p style="font-size:12px; color:#6a8abc; margin-top:8px;">⚡ Objetivo: o cadastro, não o fechamento. Não tente vender na calçada.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="script-section">
+  <div class="script-section-titulo">Captação Online</div>
+
+  <div class="script-item" id="s2">
+    <button class="script-item-header" onclick="toggleScript('s2')">
+      <div class="script-item-icon">📱</div>
+      <div class="script-item-titulo">Primeiro contato WhatsApp</div>
+      <div class="script-item-arrow">›</div>
+    </button>
+    <div class="script-item-body">
+      <div class="script-box">
+        <div class="script-label">Script · Lead online · WhatsApp</div>
+        <div class="script-linha">
+          <div class="script-quem c">Você</div>
+          <div class="script-fala">"Olá, [nome]! Tudo bem? Sou [nome], consultor de imóveis. Vi que você demonstrou interesse no [empreendimento]. Posso te contar mais agora?"</div>
+        </div>
+        <div class="script-linha">
+          <div class="script-quem c">Você</div>
+          <div class="script-fala">"Me ajuda com duas perguntas rápidas: você está procurando para morar ou investir? E já tem ideia do valor de entrada que consegue trabalhar?"</div>
+        </div>
+      </div>
+      <p style="font-size:12px; color:#6a8abc; margin-top:8px;">⚡ Responda em até 5 minutos. Após 30 min, a chance cai pela metade.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="script-section">
+  <div class="script-section-titulo">Qualificação</div>
+
+  <div class="script-item" id="s3">
+    <button class="script-item-header" onclick="toggleScript('s3')">
+      <div class="script-item-icon">🎯</div>
+      <div class="script-item-titulo">Sequência de perguntas</div>
+      <div class="script-item-arrow">›</div>
+    </button>
+    <div class="script-item-body">
+      <div class="script-box">
+        <div class="script-label">Do emocional ao racional</div>
+        <div class="script-linha">
+          <div class="script-quem c">1º</div>
+          <div class="script-fala">"O que te trouxe aqui hoje? O que motivou você a vir conhecer?"</div>
+        </div>
+        <div class="script-linha">
+          <div class="script-quem c">2º</div>
+          <div class="script-fala">"Como é o lugar onde você mora hoje? Há quanto tempo?"</div>
+        </div>
+        <div class="script-linha">
+          <div class="script-quem c">3º</div>
+          <div class="script-fala">"Você mora sozinho ou tem família? Filhos?"</div>
+        </div>
+        <div class="script-linha">
+          <div class="script-quem c">4º</div>
+          <div class="script-fala">"Quanto você paga de aluguel hoje?"</div>
+        </div>
+        <div class="script-linha">
+          <div class="script-quem c">5º</div>
+          <div class="script-fala">"Você tem algum valor guardado para entrada? Mesmo que seja pouco, sem problema."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="script-section">
+  <div class="script-section-titulo">Objeções</div>
+
+  <div class="script-item" id="s4">
+    <button class="script-item-header" onclick="toggleScript('s4')">
+      <div class="script-item-icon">💭</div>
+      <div class="script-item-titulo">"Preciso pensar mais"</div>
+      <div class="script-item-arrow">›</div>
+    </button>
+    <div class="script-item-body">
+      <div class="script-box">
+        <div class="script-label">Contorno</div>
+        <div class="script-linha">
+          <div class="script-quem c">Você</div>
+          <div class="script-fala">"Claro, faz todo sentido. Me ajuda a entender — o que especificamente você ainda precisa resolver? É alguma dúvida sobre o financiamento, o imóvel, as condições? Assim posso te ajudar agora mesmo."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script-item" id="s5">
+    <button class="script-item-header" onclick="toggleScript('s5')">
+      <div class="script-item-icon">💭</div>
+      <div class="script-item-titulo">"Não tenho entrada"</div>
+      <div class="script-item-arrow">›</div>
+    </button>
+    <div class="script-item-body">
+      <div class="script-box">
+        <div class="script-label">Contorno</div>
+        <div class="script-linha">
+          <div class="script-quem c">Você</div>
+          <div class="script-fala">"Isso é muito mais comum do que você imagina — e o Minha Casa Minha Vida foi criado exatamente para esse perfil. Você tem FGTS? Me deixa te mostrar como funciona na prática."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="script-item" id="s6">
+    <button class="script-item-header" onclick="toggleScript('s6')">
+      <div class="script-item-icon">💭</div>
+      <div class="script-item-titulo">"Está caro / parcela alta"</div>
+      <div class="script-item-arrow">›</div>
+    </button>
+    <div class="script-item-body">
+      <div class="script-box">
+        <div class="script-label">Contorno</div>
+        <div class="script-linha">
+          <div class="script-quem c">Você</div>
+          <div class="script-fala">"Você paga [valor] de aluguel hoje. Em [X] anos pagou [total] e não ficou nada no seu nome. A parcela é [valor] — a diferença é [X]. E no final o imóvel é seu. Faz sentido comparar assim?"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="script-section">
+  <div class="script-section-titulo">Indicação</div>
+
+  <div class="script-item" id="s7">
+    <button class="script-item-header" onclick="toggleScript('s7')">
+      <div class="script-item-icon">🤝</div>
+      <div class="script-item-titulo">Pedir indicação</div>
+      <div class="script-item-arrow">›</div>
+    </button>
+    <div class="script-item-body">
+      <div class="script-box">
+        <div class="script-label">Após o fechamento</div>
+        <div class="script-linha">
+          <div class="script-quem c">Você</div>
+          <div class="script-fala">"Fico muito feliz que deu certo! Você conhece mais alguém que esteja pensando em sair do aluguel? Meu trabalho cresce muito por indicação e você já viu como eu trabalho."</div>
+        </div>
+      </div>
+      <div class="script-box" style="margin-top:10px;">
+        <div class="script-label">Quando não fechou</div>
+        <div class="script-linha">
+          <div class="script-quem c">Você</div>
+          <div class="script-fala">"Entendo que não é o momento para você agora. Mas você conhece alguém que esteja procurando? Posso atender com o mesmo cuidado que tive com você."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+
+  <div class="bottom-nav">
+    <button class="nav-item" onclick="showScreen('home'); setNav('')">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-label">Início</div>
+    </button>
+    <button class="nav-item" onclick="showScreen('trilha'); setNav('trilha')">
+      <div class="nav-icon">📚</div>
+      <div class="nav-label">Trilha</div>
+    </button>
+    <button class="nav-item active" onclick="showScreen('scripts'); setNav('scripts')">
+      <div class="nav-icon">💬</div>
+      <div class="nav-label">Scripts</div>
+    </button>
+    <button class="nav-item" onclick="showScreen('checklist'); setNav('checklist')">
+      <div class="nav-icon">✅</div>
+      <div class="nav-label">Semana</div>
+    </button>
+  </div>
+</div>
+
+<!-- ===== CHECKLIST ===== -->
+
+<div id="screen-checklist" class="screen">
+  <div class="top-bar">
+    <div>
+      <div class="top-bar-title">Minha Semana</div>
+      <div class="top-bar-sub">Checklist de campo</div>
+    </div>
+  </div>
+
+  <div class="checklist-content">
+
+```
+<div class="mentor-frase" style="margin: 0 0 16px;">
+  <div class="mentor-avatar-small">YH</div>
+  <div>
+    <div class="mentor-frase-texto">"Consistência bate talento quando o talento não é consistente."</div>
+    <div class="mentor-frase-autor">— Yuri Hernandes</div>
+  </div>
+</div>
+
+<div class="semana-info">
+  <div class="semana-titulo">📅 Checklist da semana</div>
+  <div class="semana-prog" id="check-progress">0 / 10</div>
+</div>
+
+<div class="check-section">
+  <div class="check-section-titulo">Captação</div>
+  <div class="check-item" onclick="toggleCheck(this)" data-id="c1">
+    <div class="check-box">✓</div>
+    <div class="check-texto">Defini onde vou captar essa semana (local específico)</div>
+  </div>
+  <div class="check-item" onclick="toggleCheck(this)" data-id="c2">
+    <div class="check-box">✓</div>
+    <div class="check-texto">Fiz pelo menos 1 ação de captação presencial</div>
+  </div>
+  <div class="check-item" onclick="toggleCheck(this)" data-id="c3">
+    <div class="check-box">✓</div>
+    <div class="check-texto">Atualizei o status do WhatsApp hoje</div>
+  </div>
+  <div class="check-item" onclick="toggleCheck(this)" data-id="c4">
+    <div class="check-box">✓</div>
+    <div class="check-texto">Respondi todos os leads online em até 5 minutos</div>
+  </div>
+</div>
+
+<div class="check-section">
+  <div class="check-section-titulo">Qualificação e Atendimento</div>
+  <div class="check-item" onclick="toggleCheck(this)" data-id="c5">
+    <div class="check-box">✓</div>
+    <div class="check-texto">Usei a sequência de perguntas em pelo menos 1 atendimento</div>
+  </div>
+  <div class="check-item" onclick="toggleCheck(this)" data-id="c6">
+    <div class="check-box">✓</div>
+    <div class="check-texto">Anotei os dados do cliente durante o atendimento</div>
+  </div>
+  <div class="check-item" onclick="toggleCheck(this)" data-id="c7">
+    <div class="check-box">✓</div>
+    <div class="check-texto">Conectei a apresentação à dor do cliente (não só listei características)</div>
+  </div>
+</div>
+
+<div class="check-section">
+  <div class="check-section-titulo">Relacionamento</div>
+  <div class="check-item" onclick="toggleCheck(this)" data-id="c8">
+    <div class="check-box">✓</div>
+    <div class="check-texto">Fiz follow-up com pelo menos 1 lead que não fechou ainda</div>
+  </div>
+  <div class="check-item" onclick="toggleCheck(this)" data-id="c9">
+    <div class="check-box">✓</div>
+    <div class="check-texto">Pedi indicação para pelo menos 1 cliente</div>
+  </div>
+  <div class="check-item" onclick="toggleCheck(this)" data-id="c10">
+    <div class="check-box">✓</div>
+    <div class="check-texto">Estudei pelo menos 1 módulo da mentoria esta semana</div>
+  </div>
+</div>
+
+<button class="checklist-reset" onclick="resetChecklist()">↺ Reiniciar checklist</button>
+```
+
+  </div>
+
+  <div class="bottom-nav">
+    <button class="nav-item" onclick="showScreen('home'); setNav('')">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-label">Início</div>
+    </button>
+    <button class="nav-item" onclick="showScreen('trilha'); setNav('trilha')">
+      <div class="nav-icon">📚</div>
+      <div class="nav-label">Trilha</div>
+    </button>
+    <button class="nav-item" onclick="showScreen('scripts'); setNav('scripts')">
+      <div class="nav-icon">💬</div>
+      <div class="nav-label">Scripts</div>
+    </button>
+    <button class="nav-item active" onclick="showScreen('checklist'); setNav('checklist')">
+      <div class="nav-icon">✅</div>
+      <div class="nav-label">Semana</div>
+    </button>
+  </div>
+</div>
+
+<script>
+// ===== DADOS DOS MÓDULOS =====
+const modulos = [
+  {
+    num: "Módulo 0",
+    titulo: "A Decisão",
+    desc: "A base que nenhuma imobiliária ensina.",
+    cards: [
+      {
+        tipo: "📖 Abertura",
+        titulo: "Por que esse módulo existe antes de qualquer técnica",
+        body: `<p>A maioria dos treinamentos começa pela captação, pela abordagem, pelo fechamento. Esse começa um passo antes.</p>
+        <div class="card-destaque">"De nada adianta ensinar técnica para quem ainda não decidiu levar a profissão a sério."</div>
+        <p>O corretor parceiro é autônomo. Ele não é obrigado a estar aqui. Se está, há uma abertura. O papel dessa mentoria é transformar essa abertura em comprometimento real.</p>`
+      },
+      {
+        tipo: "💡 Reflexão",
+        titulo: "A verdade que ninguém conta",
+        body: `<p>Quando você era criança, sonhava em ser corretor de imóveis?</p>
+        <p>Provavelmente não. A maioria de nós não sonhou com isso. A profissão chegou como uma saída — por falta de oportunidade, por indicação, por necessidade.</p>
+        <div class="card-destaque">"A pergunta não é como você entrou. A pergunta é o que você vai fazer agora que está aqui."</div>
+        <p>Muita gente carrega vergonha de ser corretor. A esposa que não contou para a mãe. O filho que se justifica em festas. Isso é mais comum do que parece — e não precisa durar mais do que hoje.</p>`
+      },
+      {
+        tipo: "📊 Conteúdo",
+        titulo: "O que a profissão realmente entrega",
+        body: `<p>Enquanto o emprego CLT tem teto fixo, a corretagem não tem teto nenhum. Mas além da renda, existem 3 ativos que só a corretagem constrói:</p>
+        <ul class="card-lista">
+          <li><strong>Carteira de clientes</strong> — cada pessoa atendida hoje é um potencial comprador ou indicador pelos próximos 5 anos. Esse ativo é seu, não da empresa.</li>
+          <li><strong>Reputação de mercado</strong> — sua marca pessoal cresce a cada negócio bem feito. No emprego CLT, a empresa leva o crédito.</li>
+          <li><strong>Rede de relacionamento</strong> — cada contato constrói uma rede que gera resultado anos depois — mesmo para negócios que não fecharam na hora.</li>
+        </ul>`
+      },
+      {
+        tipo: "🌱 Conceito",
+        titulo: "Plantio e Colheita — como pensar o tempo",
+        body: `<div class="card-destaque">"Você não vai vender para todo mundo que atender. Mas todo mundo que você atender bem pode te trazer uma venda no futuro."</div>
+        <p>Um atendimento que não fecha hoje pode virar:</p>
+        <ul class="card-lista">
+          <li><strong>Uma venda em 3 meses</strong> — quando a situação financeira mudar</li>
+          <li><strong>Uma indicação em 6 meses</strong> — para um amigo que está procurando</li>
+          <li><strong>Um cliente fidelizado</strong> — que compra o segundo imóvel com você</li>
+          <li><strong>Uma parceria</strong> — com alguém que conheceu no plantão</li>
+        </ul>
+        <p>O corretor que só foca em quem vai comprar agora tem a carteira seca em 90 dias. Quem pensa a longo prazo colhe sem parar.</p>`
+      },
+      {
+        tipo: "✍️ Compromisso",
+        titulo: "A decisão que define tudo",
+        body: `<p>Comprometimento escrito tem muito mais chance de virar ação do que comprometimento verbal.</p>
+        <div class="card-destaque">"O corretor que planta quando não precisa colher é o que nunca precisa se desesperar para colher." — Yuri Hernandes</div>
+        <p>Antes de ir para o quiz, pense e anote no seu celular:</p>
+        <ul class="card-lista">
+          <li><strong>Uma coisa que você vai fazer diferente</strong> a partir de amanhã na sua carreira como corretor</li>
+        </ul>
+        <p>Deve ser específico e acionável — não vale "vou me dedicar mais". Escreve de verdade. Isso é o começo.</p>`
+      }
+    ],
+    quiz: [
+      {
+        pergunta: "Qual é o principal objetivo do Módulo 0?",
+        opcoes: ["Ensinar técnicas de captação", "Criar identidade profissional e comprometimento antes de qualquer técnica", "Mostrar como usar redes sociais", "Treinar script de abordagem"],
+        correta: 1,
+        feedback: "Exato! Técnica sem fundação não sustenta nada. O Módulo 0 cria a base mental antes de qualquer conteúdo prático."
+      },
+      {
+        pergunta: "Um atendimento que não fecha hoje pode virar...",
+        opcoes: ["Um cliente perdido para sempre", "Perda de tempo", "Uma venda futura, indicação ou parceria", "Apenas estatística negativa"],
+        correta: 2,
+        feedback: "Correto! Essa é a mentalidade de longo prazo. Cada contato plantado pode colher resultado meses ou anos depois."
+      },
+      {
+        pergunta: "Qual dos itens abaixo NÃO é um ativo que a corretagem constrói?",
+        opcoes: ["Carteira de clientes", "Salário fixo garantido", "Reputação de mercado", "Rede de relacionamento"],
+        correta: 1,
+        feedback: "Correto! Salário fixo é característica do emprego CLT. Na corretagem o teto não existe — mas também não há garantia fixa."
+      },
+      {
+        pergunta: "O corretor com mentalidade de curto prazo...",
+        opcoes: ["Tem carteira crescente e consistente", "Recebe indicações sem esforço", "Atende bem todos os contatos", "Foca só em quem vai comprar agora e tem carteira seca em 90 dias"],
+        correta: 3,
+        feedback: "Exato! Focar só em fechamentos rápidos cria um ciclo vicioso de ansiedade e carteira vazia."
+      },
+      {
+        pergunta: "Segundo o conteúdo, o comprometimento mais eficaz é...",
+        opcoes: ["Verbal, dito em voz alta para o grupo", "Escrito, com algo específico e acionável", "Mental, pensado internamente", "Enviado por mensagem para o gestor"],
+        correta: 1,
+        feedback: "Perfeito! Comprometimento escrito tem muito mais chance de virar ação. Escrever exige clareza e cria responsabilidade."
+      }
+    ]
+  },
+  {
+    num: "Módulo 1",
+    titulo: "A Prospecção",
+    desc: "Como gerar oportunidades na rua e no online.",
+    cards: [
+      {
+        tipo: "📖 Abertura",
+        titulo: "A história do Osvaldo",
+        body: `<p>Quando comecei no mercado imobiliário, conheci um corretor chamado Osvaldo. Quando ele entrou na empresa, a galera riu. Aparência simples, jeito desbocado, sem domínio de tecnologia.</p>
+        <p>Enquanto o melhor vendedor da equipe fazia 2 ou 3 vendas por mês, <strong>o Osvaldo teve meses que fez 11 ou 12</strong>. Fez história na empresa.</p>
+        <div class="card-destaque">"O segredo do Osvaldo não era técnica. Era presença. Ele não esperava o cliente chegar. Ele ia buscar."</div>
+        <p>Aparência, tecnologia e perfil perfeito não vendem. <strong>Presença, volume de contato e ausência de vergonha vendem.</strong></p>`
+      },
+      {
+        tipo: "💡 Conceito",
+        titulo: "Lead ativo vs lead passivo",
+        body: `<p>Existe uma diferença enorme entre o lead que chega até você e o que você vai buscar.</p>
+        <ul class="card-lista">
+          <li><strong>Lead online (passivo)</strong> — preencheu 5 formulários ao mesmo tempo, está comparando vários corretores, você compete com toda a praça</li>
+          <li><strong>Lead da rua (ativo)</strong> — não estava procurando, você chegou primeiro, a relação começa com você na frente, poucos corretores fazem isso</li>
+        </ul>
+        <div class="card-destaque">"O lead online é commodity. O lead da rua é exclusivo. E exclusivo vale mais."</div>
+        <p>Isso não significa ignorar o online — significa não <em>depender</em> só dele.</p>`
+      },
+      {
+        tipo: "📍 Locais",
+        titulo: "Onde captar na rua — alto retorno",
+        body: `<ul class="card-lista">
+          <li><strong>Terminais de ônibus</strong> — público que paga aluguel, horário nobre 6h–8h e 17h–19h, pessoas com tempo de espera</li>
+          <li><strong>Postos de saúde / UBS</strong> — fila longa, perfil compatível com MCMV, momento receptivo</li>
+          <li><strong>Comércio de bairro</strong> — o dono conhece os moradores, uma boa relação vira fonte constante de indicação</li>
+          <li><strong>Kitnetes e condomínios</strong> — quem mora em aluguel barato frequentemente quer sair</li>
+          <li><strong>Empresas / RH</strong> — uma visita pode gerar dezenas de contatos qualificados</li>
+        </ul>
+        <div class="card-destaque">💡 Dica: Um dia antes da ação, fixe cartazes no local informando que haverá um consultor fazendo cadastro gratuito para quem quer sair do aluguel.</div>`
+      },
+      {
+        tipo: "💬 Script",
+        titulo: "Abordagem presencial — o que falar",
+        body: `<div class="script-box">
+          <div class="script-label">Script de abordagem na rua</div>
+          <div class="script-linha">
+            <div class="script-quem c">Você</div>
+            <div class="script-fala">"Bom dia! Tudo bem? Sou [nome], consultor de imóveis aqui na região. Você mora de aluguel ou já tem casa própria?"</div>
+          </div>
+          <div class="script-linha">
+            <div class="script-quem cl">Cliente</div>
+            <div class="script-fala">"Moro de aluguel."</div>
+          </div>
+          <div class="script-linha">
+            <div class="script-quem c">Você</div>
+            <div class="script-fala">"Já pensou em sair? A parcela sai por um valor próximo ao que muita gente já paga de aluguel — e no final o imóvel é seu."</div>
+          </div>
+          <div class="script-linha">
+            <div class="script-quem c">Você</div>
+            <div class="script-fala">"Mesmo que não seja agora, posso fazer um cadastro rápido? Sem compromisso nenhum."</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:#6a8abc;">⚡ Objetivo: o cadastro, não o fechamento. Não tente vender na calçada.</p>`
+      },
+      {
+        tipo: "📱 Online",
+        titulo: "Captação online — use sem depender",
+        body: `<p>O online é uma ferramenta — não a única fonte. Use com inteligência:</p>
+        <ul class="card-lista">
+          <li><strong>WhatsApp Status</strong> — vitrine gratuita, poste todo dia: imóvel disponível, dica de financiamento, bastidor do plantão</li>
+          <li><strong>Instagram</strong> — consistência importa mais que produção elaborada</li>
+          <li><strong>Portais / leads frios</strong> — responda em até 5 minutos. Após 30 min a chance de contato cai pela metade</li>
+        </ul>
+        <div class="card-destaque">"No online, velocidade de resposta não é diferencial — é requisito mínimo."</div>`
+      },
+      {
+        tipo: "🤝 Amplie",
+        titulo: "Pedindo indicação do jeito certo",
+        body: `<p>A maioria não pede indicação por vergonha ou por esquecer. Deixa na mesa a fonte de lead mais barata, mais qualificada e mais fácil de fechar.</p>
+        <div class="script-box">
+          <div class="script-label">Após o fechamento</div>
+          <div class="script-linha">
+            <div class="script-quem c">Você</div>
+            <div class="script-fala">"Você conhece alguém que esteja pensando em sair do aluguel? Meu trabalho cresce muito por indicação e você já viu como eu trabalho."</div>
+          </div>
+        </div>
+        <div class="script-box">
+          <div class="script-label">Quando não fechou</div>
+          <div class="script-linha">
+            <div class="script-quem c">Você</div>
+            <div class="script-fala">"Entendo que não é o momento para você. Mas você conhece alguém procurando? Posso atender com o mesmo cuidado que tive com você."</div>
+          </div>
+        </div>`
+      }
+    ],
+    quiz: [
+      {
+        pergunta: "O que diferencia o lead da rua do lead online?",
+        opcoes: ["O lead da rua é mais barato de conseguir", "O lead da rua é exclusivo — você chegou primeiro, sem concorrência", "O lead online converte melhor", "Não há diferença relevante entre eles"],
+        correta: 1,
+        feedback: "Exato! O lead da rua não estava procurando — você criou o contato. Isso coloca você à frente sem concorrência no momento inicial."
+      },
+      {
+        pergunta: "Qual é o objetivo principal de uma abordagem presencial na rua?",
+        opcoes: ["Fechar a venda na hora", "Apresentar todas as condições do produto", "Conseguir o cadastro do cliente", "Convencer o cliente a visitar o apartamento"],
+        correta: 2,
+        feedback: "Correto! O objetivo é o cadastro, não o fechamento. Quem tenta vender na calçada assusta e vai embora de mãos vazias."
+      },
+      {
+        pergunta: "Quanto tempo você tem para responder um lead online sem perder a oportunidade?",
+        opcoes: ["Até 24 horas", "Até 2 horas", "Até 30 minutos — de preferência em 5 minutos", "Não importa o tempo, o que vale é a qualidade da resposta"],
+        correta: 2,
+        feedback: "Certo! Após 30 minutos a chance de contato cai pela metade. No online, velocidade é requisito mínimo, não diferencial."
+      },
+      {
+        pergunta: "Qual a técnica recomendada para aumentar a receptividade em uma ação de rua?",
+        opcoes: ["Chegar no horário do almoço quando há mais movimento", "Fixar cartazes no local um dia antes anunciando o cadastro gratuito", "Abordar só quem parece interessado", "Distribuir panfletos sem abordar pessoalmente"],
+        correta: 1,
+        feedback: "Exato! O cartaz antecipado cria expectativa e reduz a resistência da abordagem fria. As pessoas chegam já sabendo que você estará lá."
+      },
+      {
+        pergunta: "Por que a maioria dos corretores não pede indicação?",
+        opcoes: ["Porque indicação não converte bem", "Por vergonha ou por simplesmente esquecer", "Porque o cliente nunca conhece ninguém interessado", "Porque pedir indicação é antiético"],
+        correta: 1,
+        feedback: "Correto! Vergonha e esquecimento são os dois motivos principais. E quem não pede deixa na mesa a fonte de lead mais barata e qualificada que existe."
+      }
+    ]
+  },
+  {
+    num: "Módulo 2",
+    titulo: "A Conexão",
+    desc: "Qualifique sem interrogar. Apresente a solução, não o produto.",
+    cards: [
+      {
+        tipo: "📖 Conceito",
+        titulo: "O cliente MCMV já tem a dor",
+        body: `<p>Todo mundo que paga aluguel sente a mesma coisa: está jogando dinheiro fora todo mês. Todo mundo que mora na casa de alguém sente: falta de independência, espaço, privacidade.</p>
+        <div class="card-destaque">"A dor já existe antes de você aparecer. Você não precisa criar — precisa encontrar e nomear."</div>
+        <p>As 3 dores mais comuns do cliente MCMV:</p>
+        <ul class="card-lista">
+          <li><strong>Financeira</strong> — paga aluguel e no final do ano gastou R$ 10.000 que sumiram</li>
+          <li><strong>Independência</strong> — mora na casa da mãe, da sogra, divide apartamento, sem privacidade</li>
+          <li><strong>Futuro</strong> — quer deixar algo para os filhos, parar de jogar dinheiro fora</li>
+        </ul>`
+      },
+      {
+        tipo: "💡 Sequência",
+        titulo: "A ordem que não parece interrogatório",
+        body: `<p>Perguntas mal feitas assustam. Perguntas bem feitas constroem confiança. A diferença está na <strong>ordem</strong>.</p>
+        <ul class="card-lista">
+          <li><strong>1º Quebra gelo</strong> — cria conforto antes de qualquer pergunta</li>
+          <li><strong>2º Motivação</strong> — por que veio? o que motivou a busca?</li>
+          <li><strong>3º Situação atual</strong> — como e onde mora hoje?</li>
+          <li><strong>4º Capacidade financeira</strong> — aluguel atual, entrada, renda</li>
+        </ul>
+        <div class="card-destaque">Começa pelo emocional → vai para o racional. Quando o cliente já está conectado, falar de renda não parece interrogatório. Parece conversa.</div>`
+      },
+      {
+        tipo: "💬 Script",
+        titulo: "O script do C — completo",
+        body: `<div class="script-box">
+          <div class="script-label">Sequência de qualificação</div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"Achou fácil chegar até a gente?"</div></div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"Me conta — o que te trouxe aqui hoje?"</div></div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"Há quanto tempo você está no aluguel? Como é o lugar onde mora?"</div></div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"Você mora sozinho ou tem família? Filhos?"</div></div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"Quanto você paga de aluguel hoje?"</div></div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"Tem algum valor guardado para entrada? Mesmo pouco, sem problema."</div></div>
+        </div>`
+      },
+      {
+        tipo: "🎯 Técnica",
+        titulo: "A técnica do contraste",
+        body: `<p>Nunca diga ao cliente que ele não consegue comprar o que quer. <strong>Mostre o que ele quer primeiro. Deixe ele concluir sozinho.</strong></p>
+        <p>Então apresente a solução real — não como consolação, mas como a saída que ele não sabia que existia.</p>
+        <div class="card-destaque">❌ Errado: "Com sua renda você não consegue esse produto."<br><br>✓ Certo: "Me deixa te mostrar como funcionaria o que você gostou — e depois a gente vê o que encaixa melhor na sua realidade."</div>
+        <p>Quando o cliente chega à conclusão sozinho, ele não se sente limitado por você. Ele se sente compreendido.</p>`
+      },
+      {
+        tipo: "📊 Apresentação",
+        titulo: "Conecte o produto à dor — na prática",
+        body: `<div class="script-box">
+          <div class="script-label">Apresentação conectada à dor</div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"[Nome], você me disse que paga R$ 800 de aluguel há 3 anos. São quase R$ 30.000 pagos e nada ficou no seu nome. Certo?"</div></div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"O que tenho aqui tem uma parcela em torno de R$ [valor] — próximo do que você já paga. A diferença: no final, o imóvel é seu."</div></div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"E no Minha Casa Minha Vida você não precisa de uma grande entrada. O governo subsidia parte — o que seria inacessível para muita gente, para você pode ser possível."</div></div>
+        </div>`
+      },
+      {
+        tipo: "✅ Essencial",
+        titulo: "O que nunca pode faltar na apresentação",
+        body: `<ul class="card-lista">
+          <li><strong>Use as palavras do cliente</strong> — ele disse "cansado de jogar dinheiro fora"? Use isso na apresentação</li>
+          <li><strong>Compare parcela com aluguel atual</strong> — é o argumento mais poderoso do MCMV</li>
+          <li><strong>Mostre o subsídio como diferencial</strong> — a maioria não sabe que existe</li>
+          <li><strong>Fale do imóvel como legado</strong> — especialmente para quem tem filhos</li>
+          <li><strong>Apresente uma opção por vez</strong> — leia a reação antes de continuar</li>
+        </ul>
+        <div class="card-destaque">"Cliente que se sente ajudado fecha. E volta. E indica." — Yuri Hernandes</div>`
+      }
+    ],
+    quiz: [
+      {
+        pergunta: "Qual é a ordem correta da sequência de qualificação?",
+        opcoes: ["Financeiro → Situação → Motivação → Quebra gelo", "Quebra gelo → Motivação → Situação atual → Capacidade financeira", "Situação atual → Financeiro → Motivação", "Motivação → Financeiro → Situação → Fechamento"],
+        correta: 1,
+        feedback: "Exato! Do emocional para o racional. Quebra gelo cria conforto, motivação revela a dor, situação contextualiza, financeiro fecha o perfil."
+      },
+      {
+        pergunta: "Na técnica do contraste, o que você faz primeiro?",
+        opcoes: ["Mostra o produto que cabe no orçamento", "Explica as limitações de renda do cliente", "Mostra o que o cliente quer — e deixa ele concluir sozinho", "Pede a documentação para análise de crédito"],
+        correta: 2,
+        feedback: "Correto! Você mostra o que ele quer primeiro. Quando ele mesmo conclui que não cabe, você apresenta a solução real — não como consolação, mas como saída."
+      },
+      {
+        pergunta: "Qual é o argumento mais poderoso na apresentação para o cliente MCMV?",
+        opcoes: ["O número de quartos do imóvel", "A localização do empreendimento", "Comparar a parcela com o aluguel atual do cliente", "O prazo de entrega do imóvel"],
+        correta: 2,
+        feedback: "Correto! Quando o cliente vê que vai pagar algo próximo ao que já paga de aluguel — mas no final o imóvel é dele — o argumento se sustenta sozinho."
+      },
+      {
+        pergunta: "Por que você deve usar as palavras do próprio cliente na apresentação?",
+        opcoes: ["Para parecer mais inteligente", "Porque cria conexão — ele reconhece a própria dor sendo resolvida", "Para confundi-lo durante a negociação", "Porque é exigência do programa MCMV"],
+        correta: 1,
+        feedback: "Perfeito! Quando você usa as palavras dele, ele não sente que está sendo vendido. Ele sente que está sendo ouvido e compreendido."
+      },
+      {
+        pergunta: "O que fazer quando o cliente diz que não tem entrada?",
+        opcoes: ["Encerrar o atendimento educadamente", "Sugerir que ele volte quando tiver juntado dinheiro", "Explicar que o MCMV foi criado exatamente para esse perfil e perguntar sobre FGTS", "Reduzir o preço do imóvel"],
+        correta: 2,
+        feedback: "Exato! 'Não tenho entrada' é uma barreira mental, não financeira. O MCMV foi desenhado para quem não tem — e essa é a informação que transforma o atendimento."
+      }
+    ]
+  },
+  {
+    num: "Módulo 3",
+    titulo: "O Compromisso",
+    desc: "Lide com objeções sem travar. Feche na mesa com postura.",
+    cards: [
+      {
+        tipo: "📖 Conceito",
+        titulo: "Objeção não é rejeição",
+        body: `<p>Quando o cliente objeta, ele ainda está na conversa. Quem vai embora sem falar nada é que não tem interesse.</p>
+        <div class="card-destaque">"Objeção é a última coisa que precisa ser resolvida antes do fechamento. Não é sinal de que ele não quer — é sinal de que ele ainda não tem certeza."</div>
+        <p>O corretor que entende isso para de travar e começa a enxergar a objeção pelo que ela realmente é: <strong>uma oportunidade de resolver a última dúvida e fechar.</strong></p>
+        <p>Toda objeção tem duas camadas: a aparente (o que ele diz) e a real (o que ele sente). Você precisa chegar na raiz.</p>`
+      },
+      {
+        tipo: "💡 Objeções",
+        titulo: "As 3 objeções mais comuns — e como contornar",
+        body: `<p><strong>"Preciso pensar mais"</strong><br>Real: medo de decidir errado, dúvida não verbalizada.<br>
+        <em>→ "O que especificamente você ainda precisa resolver? É o financiamento, o imóvel, as condições? Assim posso te ajudar agora mesmo."</em></p>
+        <hr style="border:none;border-top:1px solid var(--borda);margin:14px 0;">
+        <p><strong>"Não tenho entrada"</strong><br>Real: crença de que é impossível sem entrada.<br>
+        <em>→ "O MCMV foi criado exatamente para esse perfil. Você tem FGTS? Me deixa mostrar como funciona na prática."</em></p>
+        <hr style="border:none;border-top:1px solid var(--borda);margin:14px 0;">
+        <p><strong>"Está caro"</strong><br>Real: comparação errada — não vê que aluguel some e parcela constrói.<br>
+        <em>→ "Você paga R$[X] de aluguel. Em 3 anos pagou R$[total] e não ficou nada. A parcela é próxima — mas no final o imóvel é seu."</em></p>`
+      },
+      {
+        tipo: "🎯 Estratégia",
+        titulo: "Gestão de munição — não queime tudo antes",
+        body: `<p>O erro mais comum: usar todos os argumentos na apresentação e chegar no fechamento sem munição.</p>
+        <ul class="card-lista">
+          <li><strong>Qualificação (C)</strong> — munição: perguntas abertas e escuta</li>
+          <li><strong>Apresentação (E)</strong> — munição: benefício central + comparativo com aluguel</li>
+          <li><strong>Objeções (L)</strong> — munição: respostas preparadas para cada dúvida</li>
+          <li><strong>Fechamento</strong> — munição: recurso guardado especificamente para aqui</li>
+        </ul>
+        <div class="card-destaque">⚠️ Guarde sempre um argumento para o fechamento — um desconto, uma condição especial, um prazo. Não use tudo na apresentação.</div>`
+      },
+      {
+        tipo: "💬 Técnica",
+        titulo: "A técnica do gestor",
+        body: `<p>Quando o cliente está relutante e você já usou seus argumentos principais, use esta técnica:</p>
+        <div class="script-box">
+          <div class="script-label">Script — técnica do gestor</div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"Se eu conseguir resolver [o ponto de hesitação], você fecha hoje?"</div></div>
+          <div class="script-linha"><div class="script-quem cl">Cliente</div><div class="script-fala">"Se conseguir, sim."</div></div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"Me dá um minutinho — vou falar com meu gestor."</div></div>
+          <div class="script-linha"><div class="script-quem c">Você</div><div class="script-fala">"[Nome], consegui. É só confirmar seus dados e assinar hoje mesmo."</div></div>
+        </div>
+        <p style="font-size:13px;color:#6a8abc;">⚡ Primeiro confirme que essa é a ÚLTIMA barreira. Só vá ao gestor se o cliente disser que sim.</p>`
+      },
+      {
+        tipo: "🏆 Postura",
+        titulo: "Como pedir o fechamento — sem medo",
+        body: `<p>Existe uma diferença enorme entre o corretor que recua e o que fecha com postura:</p>
+        <div class="card-destaque">❌ Sem postura: "Então... o que você acha? Quer levar para pensar? Posso mandar por WhatsApp..."<br><br>✓ Com postura: "[Nome], a gente viu que cabe no bolso e resolvemos suas dúvidas. O que falta para fechar hoje?"</div>
+        <p>A pergunta <em>"o que falta para fechar hoje?"</em> é poderosa porque coloca o ônus no cliente. Ele precisa responder com uma objeção concreta — ou confirmar.</p>`
+      },
+      {
+        tipo: "✅ Conclusão",
+        titulo: "O que nunca fazer no fechamento",
+        body: `<ul class="card-lista">
+          <li><strong>Nunca invente recursos que não existem</strong> — prometer o que não foi aprovado destrói a confiança e o negócio</li>
+          <li><strong>Nunca use urgência falsa</strong> — "só tem uma unidade" quando tem várias é apelação que o cliente percebe</li>
+          <li><strong>Nunca recue no primeiro "não"</strong> — descubra o motivo real antes de aceitar como definitivo</li>
+          <li><strong>Nunca deixe o cliente ir sem perspectiva</strong> — se não fechou agora, marque o próximo passo concreto</li>
+        </ul>
+        <div class="card-destaque">"Você tem o método. Você tem o suporte. O que falta é uma coisa só: sair e fazer." — Yuri Hernandes</div>`
+      }
+    ],
+    quiz: [
+      {
+        pergunta: "Qual é a diferença entre objeção e rejeição?",
+        opcoes: ["São a mesma coisa", "Rejeição significa que o cliente ainda está considerando", "Objeção significa que o cliente ainda está na conversa — rejeição é quando ele vai embora sem falar", "Objeção é quando o cliente pede desconto"],
+        correta: 2,
+        feedback: "Exato! Quando o cliente objeta, ele ainda está engajado. Quem rejeita vai embora sem dar chance. Objeção é oportunidade."
+      },
+      {
+        pergunta: "O que é 'gestão de munição' no processo de vendas?",
+        opcoes: ["Ter muitos argumentos prontos para usar ao mesmo tempo", "Guardar recursos e argumentos para usar no momento certo — especialmente no fechamento", "Usar todos os argumentos logo na apresentação", "Memorizar respostas para todas as objeções possíveis"],
+        correta: 1,
+        feedback: "Correto! Quem usa tudo na apresentação chega no fechamento sem nada. Reserve sempre um recurso especial para o momento decisivo."
+      },
+      {
+        pergunta: "Antes de usar a técnica do gestor, o que você DEVE confirmar?",
+        opcoes: ["Que o gestor está disponível na sala", "Que o cliente tem toda a documentação", "Que aquele é o ÚLTIMO ponto que impede o fechamento", "Que o desconto já foi aprovado previamente"],
+        correta: 2,
+        feedback: "Perfeito! Você só vai ao gestor se o cliente confirmar que, resolvido aquele ponto específico, ele fecha. Senão é esforço desperdiçado."
+      },
+      {
+        pergunta: "Qual pergunta de fechamento é mais eficaz?",
+        opcoes: ["'Você quer levar para pensar?'", "'Posso te mandar as informações por WhatsApp?'", "'O que falta para a gente fechar hoje?'", "'Você gostou do imóvel?'"],
+        correta: 2,
+        feedback: "Exato! 'O que falta para fechar hoje?' é direto e poderoso — força o cliente a verbalizar a última objeção ou confirmar o fechamento."
+      },
+      {
+        pergunta: "O que fazer quando o cliente diz 'preciso pensar mais'?",
+        opcoes: ["Aceitar e esperar ele ligar de volta", "Dar mais informações sobre o produto", "Perguntar o que especificamente ele ainda precisa resolver", "Oferecer um desconto imediatamente"],
+        correta: 2,
+        feedback: "Correto! 'Preciso pensar' raramente é sobre tempo — é sobre uma dúvida não resolvida. Sua missão é descobrir qual é essa dúvida e resolver na hora."
+      }
+    ]
+  }
+];
+
+// ===== ESTADO =====
+let moduloAtual = 0;
+let cardAtual = 0;
+let quizModulo = 0;
+let quizCard = 0;
+let quizRespostas = [];
+let modulosConcluidos = JSON.parse(localStorage.getItem('modulos_concluidos') || '[]');
+let checklistState = JSON.parse(localStorage.getItem('checklist_state') || '{}');
+
+// ===== NAVEGAÇÃO =====
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function setNav(active) {
+  // Atualiza nav em todas as telas
+}
+
+// ===== TRILHA =====
+function atualizarTrilha() {
+  const total = 4;
+  const concluidos = modulosConcluidos.length;
+  document.getElementById('trilha-progress-fill').style.width = (concluidos / total * 100) + '%';
+  document.getElementById('trilha-progress-text').textContent = concluidos + ' de ' + total + ' módulos concluídos';
+
+  for (let i = 0; i < 4; i++) {
+    const card = document.getElementById('card-mod-' + i);
+    const status = document.getElementById('status-mod-' + i);
+    const icon = card.querySelector('.modulo-icon');
+    const num = card.querySelector('.modulo-num');
+
+    if (modulosConcluidos.includes(i)) {
+      card.className = 'modulo-card completed';
+      icon.className = 'modulo-icon completed';
+      num.className = 'modulo-num completed';
+      status.className = 'status-icon completed';
+      status.textContent = '✓';
+    } else if (i === 0 || modulosConcluidos.includes(i - 1)) {
+      card.className = 'modulo-card active';
+      icon.className = 'modulo-icon active';
+      num.className = 'modulo-num';
+      status.className = 'status-icon active';
+      status.textContent = '▶';
+    } else {
+      card.className = 'modulo-card locked';
+      icon.className = 'modulo-icon locked';
+      num.className = 'modulo-num locked';
+      status.className = 'status-icon locked';
+      status.textContent = '🔒';
+    }
+  }
+}
+
+function abrirModulo(idx) {
+  if (idx > 0 && !modulosConcluidos.includes(idx - 1)) {
+    alert('Complete o módulo anterior primeiro! 🔒');
+    return;
+  }
+
+  moduloAtual = idx;
+  cardAtual = 0;
+  const mod = modulos[idx];
+
+  document.getElementById('modulo-top-title').textContent = mod.num;
+  document.getElementById('modulo-top-sub').textContent = mod.titulo;
+  document.getElementById('modulo-hero-num').textContent = mod.num;
+  document.getElementById('modulo-hero-titulo').textContent = mod.titulo;
+  document.getElementById('modulo-hero-desc').textContent = mod.desc;
+
+  renderCards();
+  showScreen('modulo');
+}
+
+// ===== CARDS =====
+function renderCards() {
+  const mod = modulos[moduloAtual];
+  const container = document.getElementById('cards-container');
+  container.innerHTML = '';
+
+  mod.cards.forEach((card, i) => {
+    const div = document.createElement('div');
+    div.className = 'content-card' + (i === cardAtual ? ' current' : '');
+    div.id = 'card-' + i;
+
+    const dots = mod.cards.map((_, j) => `<div class="dot ${j <= cardAtual ? 'done' : ''}"></div>`).join('');
+
+    div.innerHTML = `
+      <div class="card-progress">
+        <div class="card-dots">${dots}</div>
+        <div class="card-counter">${i + 1}/${mod.cards.length}</div>
+      </div>
+      <div class="card-tipo">${card.tipo}</div>
+      <div class="card-titulo">${card.titulo}</div>
+      <div class="card-body">${card.body}</div>
+    `;
+    container.appendChild(div);
+  });
+
+  atualizarNavCards();
+}
+
+function atualizarNavCards() {
+  const mod = modulos[moduloAtual];
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+
+  btnPrev.disabled = cardAtual === 0;
+
+  if (cardAtual === mod.cards.length - 1) {
+    btnNext.textContent = 'Fazer Quiz →';
+    btnNext.onclick = irParaQuiz;
+  } else {
+    btnNext.textContent = 'Próximo →';
+    btnNext.onclick = nextCard;
+  }
+}
+
+function nextCard() {
+  const mod = modulos[moduloAtual];
+  if (cardAtual < mod.cards.length - 1) {
+    document.getElementById('card-' + cardAtual).classList.remove('current');
+    cardAtual++;
+    document.getElementById('card-' + cardAtual).classList.add('current');
+    atualizarNavCards();
+    renderCards();
+    window.scrollTo(0, 0);
+  }
+}
+
+function prevCard() {
+  if (cardAtual > 0) {
+    document.getElementById('card-' + cardAtual).classList.remove('current');
+    cardAtual--;
+    document.getElementById('card-' + cardAtual).classList.add('current');
+    atualizarNavCards();
+    renderCards();
+    window.scrollTo(0, 0);
+  }
+}
+
+function voltarTrilha() {
+  showScreen('trilha');
+}
+
+function voltarModulo() {
+  showScreen('modulo');
+}
+
+// ===== QUIZ =====
+function irParaQuiz() {
+  quizModulo = moduloAtual;
+  quizCard = 0;
+  quizRespostas = [];
+
+  const mod = modulos[quizModulo];
+  document.getElementById('quiz-hero-num').textContent = mod.num;
+  document.getElementById('quiz-hero-titulo').textContent = mod.titulo;
+  document.getElementById('quiz-top-sub').textContent = mod.num + ' — ' + mod.titulo;
+
+  renderQuiz();
+  document.getElementById('quiz-resultado').classList.remove('show');
+  showScreen('quiz');
+}
+
+function renderQuiz() {
+  const mod = modulos[quizModulo];
+  const container = document.getElementById('quiz-cards-container');
+  container.innerHTML = '';
+
+  mod.quiz.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-card' + (i === quizCard ? ' current' : '');
+    div.id = 'qcard-' + i;
+
+    const letras = ['A', 'B', 'C', 'D'];
+    const opcoes = q.opcoes.map((op, j) => `
+      <button class="quiz-opcao" onclick="responder(${i}, ${j})" id="qop-${i}-${j}">
+        <div class="quiz-opcao-letra">${letras[j]}</div>
+        <span>${op}</span>
+      </button>
+    `).join('');
+
+    div.innerHTML = `
+      <div class="quiz-q-num">Pergunta ${i + 1} de ${mod.quiz.length}</div>
+      <div class="quiz-pergunta">${q.pergunta}</div>
+      <div class="quiz-opcoes">${opcoes}</div>
+      <div class="quiz-feedback" id="qfb-${i}"></div>
+      <button class="btn-quiz-next" id="qnext-${i}" onclick="proximaQuestao(${i})">
+        ${i < mod.quiz.length - 1 ? 'Próxima →' : 'Ver Resultado'}
+      </button>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function responder(qi, opcaoIdx) {
+  const mod = modulos[quizModulo];
+  const q = mod.quiz[qi];
+  const correta = q.correta;
+  const fb = document.getElementById('qfb-' + qi);
+  const btnNext = document.getElementById('qnext-' + qi);
+
+  // Desabilitar todas as opções
+  for (let j = 0; j < q.opcoes.length; j++) {
+    const btn = document.getElementById('qop-' + qi + '-' + j);
+    btn.disabled = true;
+    if (j === correta) btn.classList.add('correta');
+    if (j === opcaoIdx && opcaoIdx !== correta) btn.classList.add('errada');
+  }
+
+  const acertou = opcaoIdx === correta;
+  quizRespostas[qi] = acertou;
+
+  fb.className = 'quiz-feedback show ' + (acertou ? 'ok' : 'nok');
+  fb.innerHTML = (acertou ? '✓ ' : '✗ ') + q.feedback;
+  btnNext.classList.add('show');
+}
+
+function proximaQuestao(atual) {
+  const mod = modulos[quizModulo];
+  document.getElementById('qcard-' + atual).classList.remove('current');
+
+  if (atual < mod.quiz.length - 1) {
+    quizCard = atual + 1;
+    document.getElementById('qcard-' + quizCard).classList.add('current');
+    window.scrollTo(0, 0);
+  } else {
+    mostrarResultado();
+  }
+}
+
+function mostrarResultado() {
+  document.getElementById('quiz-cards-container').style.display = 'none';
+  const acertos = quizRespostas.filter(Boolean).length;
+  const total = modulos[quizModulo].quiz.length;
+  const aprovado = acertos >= Math.ceil(total * 0.6);
+
+  document.getElementById('score-num').textContent = acertos;
+  document.getElementById('resultado-icon').textContent = aprovado ? '🏆' : '📚';
+  document.getElementById('resultado-titulo').textContent = aprovado ? 'Aprovado!' : 'Quase lá!';
+  document.getElementById('resultado-sub').textContent = aprovado
+    ? `Você acertou ${acertos} de ${total} questões. Módulo concluído!`
+    : `Você acertou ${acertos} de ${total}. Revise o conteúdo e tente novamente.`;
+
+  const btnProx = document.getElementById('btn-proximo-modulo');
+  if (aprovado) {
+    btnProx.textContent = quizModulo < 3 ? 'Próximo Módulo →' : '🎉 Concluir Mentoria';
+    btnProx.onclick = concluirModulo;
+  } else {
+    btnProx.textContent = '← Rever conteúdo';
+    btnProx.onclick = () => {
+      document.getElementById('quiz-cards-container').style.display = 'block';
+      document.getElementById('quiz-resultado').classList.remove('show');
+      quizCard = 0;
+      quizRespostas = [];
+      renderQuiz();
+    };
+  }
+
+  document.getElementById('quiz-resultado').classList.add('show');
+}
+
+function concluirModulo() {
+  if (!modulosConcluidos.includes(quizModulo)) {
+    modulosConcluidos.push(quizModulo);
+    localStorage.setItem('modulos_concluidos', JSON.stringify(modulosConcluidos));
+  }
+  document.getElementById('quiz-cards-container').style.display = 'block';
+  atualizarTrilha();
+  showScreen('trilha');
+  setNav('trilha');
+}
+
+// ===== SCRIPTS =====
+function toggleScript(id) {
+  const item = document.getElementById(id);
+  item.classList.toggle('open');
+}
+
+// ===== CHECKLIST =====
+function initChecklist() {
+  document.querySelectorAll('.check-item').forEach(item => {
+    const id = item.dataset.id;
+    if (checklistState[id]) {
+      item.classList.add('done');
+    }
+  });
+  atualizarCheckProgress();
+}
+
+function toggleCheck(item) {
+  const id = item.dataset.id;
+  item.classList.toggle('done');
+  checklistState[id] = item.classList.contains('done');
+  localStorage.setItem('checklist_state', JSON.stringify(checklistState));
+  atualizarCheckProgress();
+}
+
+function atualizarCheckProgress() {
+  const total = document.querySelectorAll('.check-item').length;
+  const done = document.querySelectorAll('.check-item.done').length;
+  document.getElementById('check-progress').textContent = done + ' / ' + total;
+}
+
+function resetChecklist() {
+  if (!confirm('Reiniciar checklist da semana?')) return;
+  checklistState = {};
+  localStorage.setItem('checklist_state', JSON.stringify(checklistState));
+  document.querySelectorAll('.check-item').forEach(item => item.classList.remove('done'));
+  atualizarCheckProgress();
+}
+
+// ===== INIT =====
+atualizarTrilha();
+initChecklist();
+</script>
+
+</body>
+</html>

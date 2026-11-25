@@ -1,0 +1,7 @@
+joinville/
+obras/
+costapark/
+out/
+*.mp4
+*.wav
+__pycache__/

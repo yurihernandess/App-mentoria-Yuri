@@ -1,0 +1,9 @@
+{
+  "processado_em": "2026-11-25",
+  "joinville": {"Evolution": "2026-10", "Floratta": "2026-10", "Polinésia": "2026-10", "Torres do Glória": "2026-10",
+                "Urban Azaléia": "2026-10", "Urban Baviera": "2026-10", "Urban Orquideas": "entregue"},
+  "litoral": {"Landscape": "2026-10", "Morada do Sol": "2026-10", "Baía Azul": "2026-10", "Aruba": "2026-10", "Belvedere": "2026-10",
+              "Curaçao": "2026-10", "Ibiza": "2026-10", "Maui": "2026-10", "Farol da Barra": "2026-10"},
+  "estilos_usados_2026-10": {"Evolution": "morph", "Urban Baviera": "slider", "Torres do Glória": "hyper", "Floratta": "mosaic",
+                             "Polinésia": "polaroid", "Urban Azaléia": "triptych", "Urban Orquideas": "rewind"}
+}

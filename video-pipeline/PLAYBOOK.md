@@ -49,3 +49,13 @@ na branch `claude/real-estate-video-editing-pzs9xv`. Nunca versione fotos ou ví
 
 ## Dependências
 ffmpeg, Python 3 com Pillow e numpy, Node com Playwright (já vêm no ambiente). Fontes Inter e JetBrains Mono do sistema.
+
+## Referência de estilo: Renan Monteiro (@renanmonteirox), aplicar sempre
+- YouTube: entregar **3 títulos + 3 thumbnails** por vídeo, para usar no "Testar e comparar" do YouTube Studio.
+  Variações: (A) grade/visão geral, (B) antes × depois com faixa vermelha, (C) pergunta provocativa ("Vale a pena comprar na planta?").
+- Gancho em tom de alerta ("Se você ___, está errando"), com faixa de texto vermelha/desgastada sobre o vídeo.
+- Corte de quebra de padrão (meme/imagem inesperada) a cada 5–8 s em vídeos falados.
+- Legenda: frases curtas, uma ideia por linha, números concretos, "dados e não achismo".
+- Gancho para o dia seguinte no fim da legenda ("amanhã eu mostro…"), criando série.
+- Chamada por palavra-chave nos comentários ("Comenta OBRA que eu te mando a tabela") com resposta automática na DM.
+- Prova com dados (prints de CRM/resultados) e bastidores ("POV: …").
